@@ -9,7 +9,7 @@ const setStates = new Set();
 
 
 app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5000'); // update to match the domain you will make the request from
+    res.header('Access-Control-Allow-Origin', 'http://localhost:4000'); // update to match the domain you will make the request from
     res.header(
         'Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept'
@@ -22,18 +22,23 @@ fs.createReadStream('table.csv')
         results.push(data)
     })
     .on('end', () => {
+        //console.log(results);
         console.log(results);
+        results.map((item)=> {
+            setSchools.add(item.school.trim())
+            setStates.add(item.state.trim())
+        })
     });
 
-results.map((item)=> {
-    setSchools.add(item.school.trim())
-    setStates.add(item.state.trim())
-})
+
+
 app.get('/api/schools', (req,res) => {
-    res.send(setSchools)
+    res.send(setSchools.values())
 })
 app.get('/api/states', (req,res) => {
-    res.send(setStates)
+    console.log(JSON.stringify(setStates))
+    res.send(setStates.values())
+   
 })
 app.get('/api', (req, res, next) => {
     res.send(results);

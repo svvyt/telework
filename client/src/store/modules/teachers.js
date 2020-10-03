@@ -3,7 +3,7 @@ export default {
     actions: {
         async fetchTeachers(ctx) {
             await axios
-                .get("/api")
+                .get("http://localhost:3000/api")
                 .then(response => {
                     const teachers = response.data;
                     ctx.commit('updateTeachers',teachers)
@@ -13,7 +13,7 @@ export default {
                     console.error(e);
                 });
                 await axios
-                .get("/api/schools")
+                .get("http://localhost:3000/api/schools")
                 .then(response => {
                     const schools = response.data;
                     ctx.commit('updateSchoolSet',schools);
@@ -21,7 +21,7 @@ export default {
                     console.error(e);
                 });
                 await axios
-                .get('api/states')
+                .get('http://localhost:3000/api/states')
                 .then(response =>{
                     const states = response.data
                     ctx.commit('updateStateSet',states);

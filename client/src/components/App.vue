@@ -1,16 +1,20 @@
 <template>
   <div id="app">
     <intro />
+    <Chart :optionSet="getSchoolSet"/>
   </div>
 </template>
 
 <script>
 import Intro from "./Intro";
+import Chart from "./Chart";
 import { mapGetters, mapActions } from "vuex";
 export default {
   name: "app",
   components: {
     Intro,
+    Chart
+
   },
   methods: mapActions(["fetchTeachers"]),
   computed: mapGetters([
@@ -21,6 +25,7 @@ export default {
   ]),
   async mounted() {
     this.fetchTeachers();
+    console.log(getSchoolSet())
   },
 };
 </script>

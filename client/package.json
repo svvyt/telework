@@ -1,7 +1,7 @@
 {
     "name": "client",
     "version": "0.1.0",
-    "private": true,
+    "private": false,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
@@ -45,5 +45,8 @@
         "not dead"
     ],
     "_id": "client@0.1.0",
-    "readme": "ERROR: No README data found!"
+    "readme": "ERROR: No README data found!",
+    "main": "index.js",
+    "author": "kkit3911<ivanignatenko28@gmail.com>",
+    "license": "MIT"
 }

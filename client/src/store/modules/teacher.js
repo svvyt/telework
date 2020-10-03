@@ -5,15 +5,13 @@ export default {
             await axios
                 .get("/api")
                 .then(response => {
-                    const teachers = response.data;
                     const areaSet = new Set();
                     const schoolSet = new Set();
-
-                    for (let item of teachers) {
+                    response.data.map((item) => {
                         schoolSet.add(item.school.trim());
                         areaSet.add(item.Area.trim());
-                    }
-                    ctx.commit('updateTeachers', teachers);
+                    })
+                    ctx.commit('updateTeachers', response.data);
                     ctx.commit('updateAreaSet', areaSet);
                     ctx.commit('updateSchoolSet', schoolSet);
                     // let loader = true;
